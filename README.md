@@ -22,6 +22,10 @@ or via wget:
 ```bash
 $ wget -O - http://localhost:5000/get_versions
 ```
+or via curl
+```bash
+$ curl -i -X GET http://localhost:5000/get_versions
+```
 
 ## Checkout the logs while running
 ```bash

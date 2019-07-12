@@ -22,7 +22,7 @@ app = flask.Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Flask Dockerized: Hello World.'
+    return flask.jsonify('\nFlask Dockerized:\n\nHello World.\n')
 
 
 @app.route('/get_versions')
