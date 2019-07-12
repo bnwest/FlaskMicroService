@@ -6,7 +6,13 @@ import sys
 import logging
 
 import flask
+
+# flask_restplus.Model marshals and defines the structure
+# of the data returned by the flask app's response
 import flask_restplus
+
+# marshmallow.Schema validates the structure and type of JSON data
+# passed to the API during a request
 import marshmallow
 
 LOGGER = logging.getLogger(__name__)
