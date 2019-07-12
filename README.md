@@ -16,6 +16,7 @@ $ docker run -d -p 5000:5000 flask-micro-service
 ## Visit running flask app within broswer via URL:
 ```bash
 http://localhost:5000/
+http://localhost:5000/get_versions
 ```
 
 ## Checkout the logs while running
