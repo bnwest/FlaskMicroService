@@ -18,6 +18,10 @@ $ docker run -d -p 5000:5000 flask-micro-service
 http://localhost:5000/
 http://localhost:5000/get_versions
 ```
+or via wget:
+```bash
+$ wget -O - http://localhost:5000/get_versions
+```
 
 ## Checkout the logs while running
 ```bash
