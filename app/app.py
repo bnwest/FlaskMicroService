@@ -21,11 +21,18 @@ app = flask.Flask(__name__)
 # api = flask_restplus.Api(app)
 
 
+###############################################################################
+# / endpoint
+###############################################################################
+
 @app.route('/')
 def hello_world():
     app.logger.info('HELLO WORLD.')
     return flask.jsonify('\nFlask Dockerized:\n\nHello World.\n')
 
+###############################################################################
+# /get_versions endpoint
+###############################################################################
 
 @app.route('/get_versions')
 def get_versions():
@@ -41,16 +48,36 @@ def get_versions():
     }
     return flask.jsonify(versions)
 
+###############################################################################
+# /echo endpoint
+###############################################################################
+
+class EchoGetRequestSchema(marshmallow.Schema):
+    """
+    Data required for the /echo endpoint
+    """
+    answer = marshmallow.fields.Int(required=True)
+
+    @marshmallow.validates('answer')
+    def validate_lead_time(self, answer):
+        """ Answer must be 42. """
+        if answer is not 42:
+            raise marshmallow.ValidationError('Answer must 42. Deep Thought has degreed.')
+
 
 @app.route('/echo')
 def echo():
     """
     Usage:
-        curl -i -X GET http://localhost:5000/echo -H "Content-Type: application/json" -d '{ "answer": 42 }'
+        curl -i --request GET http://localhost:5000/echo --header "Content-Type: application/json" --data '{ "answer": 42 }'
     """
     # flask.request.json's name is a LIE; it is a python dictionary.
     payload = flask.request.json
-    app.logger.info('echo called with payload:\n%s', flask.request.json)
+    app.logger.info('echo called with payload:\n%s', payload)
+
+    # validate the incoming request JSON payload
+    kwargs = EchoGetRequestSchema().load(payload)
+    app.logger.info('marshmallow load returns:\n%s', kwargs)
 
     # karmaic return
     return flask.jsonify(payload)
