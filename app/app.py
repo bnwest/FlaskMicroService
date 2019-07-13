@@ -108,7 +108,10 @@ class EchoPlus(flask_restplus.Resource):
         kwargs = EchoGetRequestSchema().load(payload)
         app.logger.info('marshmallow load returns:\n%s', kwargs)
 
-        payload['fools_errand'] = True
+        # karmaic return
+        payload['ignore_fools_errand'] = True
+        # create response via flask_restplus model,
+        # which ignores and adds as it sees fit
         return payload
 
 ###############################################################################
