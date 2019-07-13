@@ -89,7 +89,7 @@ def echo():
 
 api = flask_restplus.Api(app)
 
-echo_plus_model = api.model('Echo Get Response Model',{
+echo_plus_model = api.model('Echo Get Response Model', {
     'answer':  flask_restplus.fields.Integer(required=True, description='The answer to all question.'),
     "utc":     flask_restplus.fields.DateTime(attribute=lambda x: datetime.utcnow()),
     "utc_alt": flask_restplus.fields.String(attribute=lambda x: str(datetime.utcnow())), # str() is not required
@@ -114,7 +114,7 @@ class EchoPlus(flask_restplus.Resource):
 
         # karmaic return
         payload['ignore_fools_errand'] = True
-        # create response via flask_restplus model,
+        # create response via a flask_restplus model,
         # which ignores and adds as it sees fit
         return payload
 
