@@ -18,7 +18,6 @@ import marshmallow
 
 
 app = flask.Flask(__name__)
-# api = flask_restplus.Api(app)
 
 
 ###############################################################################
@@ -75,13 +74,38 @@ def echo():
     payload = flask.request.json
     app.logger.info('echo called with payload:\n%s', payload)
 
-    # validate the incoming request JSON payload
+    # validate the incoming request JSON payload via marshmallow
     kwargs = EchoGetRequestSchema().load(payload)
     app.logger.info('marshmallow load returns:\n%s', kwargs)
 
     # karmaic return
     return flask.jsonify(payload)
 
+###############################################################################
+# /echo_plus endpoint
+###############################################################################
+
+api = flask_restplus.Api(app)
+
+@api.route('/echo_plus')
+class EchoPlus(flask_restplus.Resource):
+    """
+    Usage:
+        curl -i --request GET http://localhost:5000/echo_plus --header "Content-Type: application/json" --data '{ "answer": 42 }'
+    """
+    def get(self):
+        payload = flask.request.json
+        app.logger.info('echo_plus called with payload:\n%s', payload)
+
+        # validate the incoming request JSON payload via marshmallow
+        kwargs = EchoGetRequestSchema().load(payload)
+        app.logger.info('marshmallow load returns:\n%s', kwargs)
+
+        return payload
+
+###############################################################################
+# main
+###############################################################################
 
 if __name__ == '__main__':
     # app.logger.info('Starting flask app up ...') # no op since app is not running?
