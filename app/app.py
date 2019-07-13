@@ -123,5 +123,4 @@ class EchoPlus(flask_restplus.Resource):
 ###############################################################################
 
 if __name__ == '__main__':
-    # app.logger.info('Starting flask app up ...') # no op since app is not running?
     app.run(debug=True,host='0.0.0.0')
