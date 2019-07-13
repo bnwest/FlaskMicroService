@@ -89,7 +89,7 @@ api = flask_restplus.Api(app)
 
 echo_plus_model = api.model('Echo Get Response Model',{
     'answer': flask_restplus.fields.Integer(required=True, description='The answer to all question.'),
-    "utc": flask_restplus.fields.String(attribute=lambda x: datetime.utcnow()),
+    "utc":    flask_restplus.fields.String(attribute=lambda x: datetime.utcnow()),
 })
 
 @api.route('/echo_plus')
