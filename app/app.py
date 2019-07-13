@@ -87,12 +87,18 @@ def echo():
 
 api = flask_restplus.Api(app)
 
+echo_plus_model = api.model('Echo Get Response Model',{
+    'answer': flask_restplus.fields.Integer(required=True, description='The answer to all question.'),
+})
+
 @api.route('/echo_plus')
 class EchoPlus(flask_restplus.Resource):
     """
     Usage:
         curl -i --request GET http://localhost:5000/echo_plus --header "Content-Type: application/json" --data '{ "answer": 42 }'
     """
+
+    @api.marshal_with(echo_plus_model)
     def get(self):
         payload = flask.request.json
         app.logger.info('echo_plus called with payload:\n%s', payload)
@@ -101,6 +107,7 @@ class EchoPlus(flask_restplus.Resource):
         kwargs = EchoGetRequestSchema().load(payload)
         app.logger.info('marshmallow load returns:\n%s', kwargs)
 
+        payload['fools_errand'] = True
         return payload
 
 ###############################################################################
