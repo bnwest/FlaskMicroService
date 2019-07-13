@@ -114,7 +114,7 @@ class EchoPlus(flask_restplus.Resource):
 
         # karmaic return
         payload['ignore_fools_errand'] = True
-        # create response via a flask_restplus model,
+        # create/marshal a response via a flask_restplus model,
         # which ignores and adds as it sees fit
         return payload
 
