@@ -4,6 +4,7 @@ A Flask Micro Service app.
 
 import sys
 import logging
+import json
 
 import flask
 
@@ -15,13 +16,14 @@ import flask_restplus
 # passed to the API during a request
 import marshmallow
 
-LOGGER = logging.getLogger(__name__)
 
 app = flask.Flask(__name__)
+# api = flask_restplus.Api(app)
 
 
 @app.route('/')
 def hello_world():
+    app.logger.info('HELLO WORLD.')
     return flask.jsonify('\nFlask Dockerized:\n\nHello World.\n')
 
 
@@ -40,6 +42,20 @@ def get_versions():
     return flask.jsonify(versions)
 
 
+@app.route('/echo')
+def echo():
+    """
+    Usage:
+        curl -i -X GET http://localhost:5000/echo -H "Content-Type: application/json" -d '{ "answer": 42 }'
+    """
+    # flask.request.json's name is a LIE; it is a python dictionary.
+    payload = flask.request.json
+    app.logger.info('echo called with payload:\n%s', flask.request.json)
+
+    # karmaic return
+    return flask.jsonify(payload)
+
+
 if __name__ == '__main__':
-    LOGGER.info('Starting flask app up ...')
+    # app.logger.info('Starting flask app up ...') # no op since app is not running?
     app.run(debug=True,host='0.0.0.0')
