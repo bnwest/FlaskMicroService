@@ -90,7 +90,7 @@ def echo():
 api = flask_restplus.Api(app)
 
 echo_plus_model = api.model('Echo Get Response Model', {
-    'answer':  flask_restplus.fields.Integer(required=True, description='The answer to all question.'),
+    'answer':  flask_restplus.fields.Integer(required=True, description='The answer to all questions.'),
     "utc":     flask_restplus.fields.DateTime(attribute=lambda x: datetime.utcnow()),
     "utc_alt": flask_restplus.fields.String(attribute=lambda x: str(datetime.utcnow())), # str() is not required
     # flask_restplus.fields.{FormattedString, Url, Date, DateTime, Fixed, Float, Integer, String}
