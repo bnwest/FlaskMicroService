@@ -21,10 +21,52 @@ http://localhost:5000/get_versions
 or via wget:
 ```bash
 $ wget -O - http://localhost:5000/get_versions
+--2019-07-13 19:33:25--  http://localhost:5000/get_versions
+Resolving localhost (localhost)... 127.0.0.1, ::1
+Connecting to localhost (localhost)|127.0.0.1|:5000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 230 [application/json]
+Saving to: ‘STDOUT’
+
+-                                    0%[                                                                 ]       0  --.-KB/s               {
+  "flask": "0.12.4",
+  "flask_restplus": "0.12.1",
+  "marshmallow": "2.19.5",
+  "python": "3.7.4 (default, Jul 12 2019, 01:10:03) \n[GCC 6.3.0 20170516]",
+  "python-info": [
+    3,
+    7,
+    4,
+    "final",
+    0
+  ]
+}
+-                                  100%[================================================================>]     230  --.-KB/s    in 0s
+
+2019-07-13 19:33:25 (7.26 MB/s) - written to stdout [230/230]
 ```
 or via curl
 ```bash
 $ curl -i -X GET http://localhost:5000/get_versions
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 230
+Server: Werkzeug/0.15.4 Python/3.7.4
+Date: Sat, 13 Jul 2019 19:32:16 GMT
+
+{
+  "flask": "0.12.4",
+  "flask_restplus": "0.12.1",
+  "marshmallow": "2.19.5",
+  "python": "3.7.4 (default, Jul 12 2019, 01:10:03) \n[GCC 6.3.0 20170516]",
+  "python-info": [
+    3,
+    7,
+    4,
+    "final",
+    0
+  ]
+}
 ```
 
 ## Checkout the logs while running
