@@ -13,7 +13,7 @@ $ docker run -d -p 5000:5000 flask-micro-service
 90b5e91f873c5fe9acf014ca63cfc5235a5b5d66ecb534c83cc9963bba98c36f
 ```
 
-## Visit running flask app within broswer via URL:
+## Visit running flask app within broswer via URLs:
 ```bash
 http://localhost:5000/
 http://localhost:5000/get_versions
