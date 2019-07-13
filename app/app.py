@@ -113,7 +113,7 @@ class EchoPlus(flask_restplus.Resource):
         app.logger.info('marshmallow load returns:\n%s', kwargs)
 
         # karmaic-ish return
-        payload['ignore_fools_errand'] = True
+        payload['ignore_fools_errand'] = True # gets ignored when marshalled by model
         # create/marshal a response via a flask_restplus model (see @api.marshal_with() decorator),
         # which ignores and adds as it sees fit
         return payload
