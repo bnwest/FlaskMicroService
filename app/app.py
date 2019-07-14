@@ -58,6 +58,7 @@ class EchoGetRequestSchema(marshmallow.Schema):
     Data required for the /echo endpoint
     """
     answer = marshmallow.fields.Int(required=True)
+    # marshmallow.fields.{Dict, List, Tuple, String, UUID, Number, Integer, Decimal, Boolean, Float, DateTime, Time, Date, Url}
 
     @marshmallow.validates('answer')
     def validate_lead_time(self, answer):
