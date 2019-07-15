@@ -1,5 +1,5 @@
 # To use:
-# $ docker-compose -f docker-compose up api
+# $ docker-compose -f docker-compose up test_flask_micro_service
 
 version: '3.4'
 
