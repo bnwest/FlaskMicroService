@@ -121,17 +121,10 @@ class EchoPlus(flask_restplus.Resource):
 
 
 ###############################################################################
-# factory bits?
-###############################################################################
-def add_namespaces(app_instance):
-    from routes import v1_routes
-    for route in v1_routes:
-        app_instance.add_namespace(route)
-
-###############################################################################
 # main
 ###############################################################################
 
 if __name__ == '__main__':
-    add_namespaces(api)
+    from api import register_apis
+    register_apis(api)
     app.run(debug=True, host='0.0.0.0')

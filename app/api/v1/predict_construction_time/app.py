@@ -1,11 +1,11 @@
 from flask import request
-from flask_restplus import Namespace, Resource
+from flask_restplus import Resource
+from ..api import ns
+
+process_route = "/predict_construction_time"
 
 
-nsv1 = Namespace('predict_construction_time/v1', description='Predict Construction Time')
-
-
-@nsv1.route('/')
+@ns.route(process_route)
 class PredictModelVersions(Resource):
     def get(self):
         """
@@ -16,7 +16,7 @@ class PredictModelVersions(Resource):
         pass
 
 
-@nsv1.route('/<int:model_ref>/cnc_quick_materials')
+@ns.route(process_route + '/<int:model_ref>/cnc_quick_materials')
 class CNCQuickMaterials(Resource):
     def get(self):
         """
@@ -27,7 +27,7 @@ class CNCQuickMaterials(Resource):
         pass
 
 
-@nsv1.route('/<int:model_ref>/cnc_nonquick_materials')
+@ns.route(process_route + '/<int:model_ref>/cnc_nonquick_materials')
 class CNCNonQuickMaterials(Resource):
     def get(self):
         """
@@ -38,7 +38,7 @@ class CNCNonQuickMaterials(Resource):
         pass
 
 
-@nsv1.route('/<int:model_ref>/sheet_metal')
+@ns.route(process_route + '/<int:model_ref>/sheet_metal')
 class SheetMetal(Resource):
     def get(self):
         """
