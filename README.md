@@ -105,7 +105,7 @@ Date: Sat, 13 Jul 2019 19:09:07 GMT
 
 This endpoint extends the previous endpoint by adding a `flask_restplus` model to create the request's response.  Date fields were added to the response.
 
-### To exercise the /echo endpoint:
+### To exercise the /echo_plus endpoint:
 ```bash
 $ curl -i -X GET http://localhost:5000/echo_plus --header "Content-Type: application/json" --data '{ "answer": 42 }'
 HTTP/1.0 200 OK
