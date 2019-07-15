@@ -10,6 +10,4 @@ services:
     image: test-flask-micro-service:latest
     depends_on:
       - flask_micro_service
-    entrypoint:
-      - echo
-      - "Hello World."
+    entrypoint: "/usr/bin/curl -i -X GET http://flask_micro_service:5000/get_versions"
