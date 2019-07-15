@@ -6,8 +6,11 @@ version: '3.4'
 services:
   flask_micro_service:
     image: flask-micro-service:latest
+    ports:
+      - "5080:5000"
   test_flask_micro_service:
     image: test-flask-micro-service:latest
     depends_on:
       - flask_micro_service
-    entrypoint: "/usr/bin/curl -i -X GET http://flask_micro_service:5000/get_versions"
+    # entrypoint: "/usr/bin/curl -i -X GET http://flask_micro_service:5000/get_versions"
+    entrypoint: py.test test_flask_micro_service.tavern.yaml
