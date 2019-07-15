@@ -1,8 +1,8 @@
-from flask_restplus import Namespace
+def build_namespaces(create_ns_func):
+    ns_partial = create_ns_func('v1')
 
-ns = Namespace('v1', description='Predict Construction Time')
+    from api.v1.predict_construction_time.app import init_app as init1
+    #from api.v1.do_something_else.app import init_app as init2
 
-
-def build_namespaces():
-    from api.v1.predict_construction_time import app
-    return ns
+    namespaces = [init_app(ns_partial) for init_app in [init1]]
+    return namespaces

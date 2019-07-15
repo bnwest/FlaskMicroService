@@ -88,23 +88,23 @@ def echo():
 # /echo_plus endpoint
 ###############################################################################
 
-api = flask_restplus.Api(app)
+api_instance = flask_restplus.Api(app)
 
-echo_plus_model = api.model('Echo Get Response Model', {
+echo_plus_model = api_instance.model('Echo Get Response Model', {
     'answer':  flask_restplus.fields.Integer(required=True, description='The answer to all questions.'),
     "utc":     flask_restplus.fields.DateTime(attribute=lambda x: datetime.utcnow()),
     "utc_alt": flask_restplus.fields.String(attribute=lambda x: str(datetime.utcnow())), # str() is not required
     # flask_restplus.fields.{FormattedString, Url, Date, DateTime, Fixed, Float, Integer, String}
 })
 
-@api.route('/echo_plus')
+@api_instance.route('/echo_plus')
 class EchoPlus(flask_restplus.Resource):
     """
     Usage:
         curl -i --request GET http://localhost:5000/echo_plus --header "Content-Type: application/json" --data '{ "answer": 42 }'
     """
 
-    @api.marshal_with(echo_plus_model)
+    @api_instance.marshal_with(echo_plus_model)
     def get(self):
         payload = flask.request.json
         app.logger.info('echo_plus called with payload:\n%s', payload)
@@ -126,5 +126,5 @@ class EchoPlus(flask_restplus.Resource):
 
 if __name__ == '__main__':
     from api import register_apis
-    register_apis(api)
+    register_apis(api_instance)
     app.run(debug=True, host='0.0.0.0')
