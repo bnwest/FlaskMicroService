@@ -16,8 +16,7 @@ stages:
     # ...and the expected response code and body
     response:
       status_code: 200
-      #body:
-      #  id: 1
+      # body: '\nFlask Dockerized:\n\nHello World.\n'
 
 ---
 
@@ -56,8 +55,8 @@ stages:
     # ...and the expected response code and body
     response:
       status_code: 200
-      #body:
-      #  id: 1
+      body:
+        "answer": 42
 
 ---
 
@@ -77,5 +76,5 @@ stages:
     # ...and the expected response code and body
     response:
       status_code: 200
-      #body:
-      #  id: 1
+      body:
+        "answer": 42
