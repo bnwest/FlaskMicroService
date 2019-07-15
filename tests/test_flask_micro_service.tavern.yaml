@@ -1,0 +1,81 @@
+# This an integration level for the flask-micro-service.
+
+---
+
+test_name: test the hello world "/" endpoint
+
+# ...and each test has one or more stages (e.g. an HTTP request)
+stages:
+  - name: get service to return "Hello World."
+
+    # Define the request to be made...
+    request:
+      url: http://flask_micro_service:5000/
+      method: GET
+
+    # ...and the expected response code and body
+    response:
+      status_code: 200
+      #body:
+      #  id: 1
+
+---
+
+test_name: test the "/get_versions" endpoint
+
+# ...and each test has one or more stages (e.g. an HTTP request)
+stages:
+  - name: get versions
+
+    # Define the request to be made...
+    request:
+      url: http://flask_micro_service:5000/get_versions
+      method: GET
+
+    # ...and the expected response code and body
+    response:
+      status_code: 200
+      #body:
+      #  id: 1
+
+---
+
+test_name: test the "/echo" endpoint
+
+# ...and each test has one or more stages (e.g. an HTTP request)
+stages:
+  - name: echo input as output
+
+    # Define the request to be made...
+    request:
+      url: http://flask_micro_service:5000/echo
+      method: GET
+      json:
+        "answer": 42
+
+    # ...and the expected response code and body
+    response:
+      status_code: 200
+      #body:
+      #  id: 1
+
+---
+
+test_name: test the "/echo_plus" endpoint
+
+# ...and each test has one or more stages (e.g. an HTTP request)
+stages:
+  - name: echo input as output
+
+    # Define the request to be made...
+    request:
+      url: http://flask_micro_service:5000/echo_plus
+      method: GET
+      json:
+        "answer": 42
+
+    # ...and the expected response code and body
+    response:
+      status_code: 200
+      #body:
+      #  id: 1
