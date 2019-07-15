@@ -1,0 +1,15 @@
+# To use:
+# $ docker-compose -f docker-compose up api
+
+version: '3.4'
+
+services:
+  flask_micro_service:
+    image: flask-micro-service:latest
+  test_flask_micro_service:
+    image: test-flask-micro-service:latest
+    depends_on:
+      - flask_micro_service
+    entrypoint:
+      - echo
+      - "Hello World."
