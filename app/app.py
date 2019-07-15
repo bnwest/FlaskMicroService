@@ -119,9 +119,19 @@ class EchoPlus(flask_restplus.Resource):
         # which ignores and adds as it sees fit
         return payload
 
+
+###############################################################################
+# factory bits?
+###############################################################################
+def add_namespaces(app_instance):
+    from routes import v1_routes
+    for route in v1_routes:
+        app_instance.add_namespace(route)
+
 ###############################################################################
 # main
 ###############################################################################
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0')
+    add_namespaces(api)
+    app.run(debug=True, host='0.0.0.0')
