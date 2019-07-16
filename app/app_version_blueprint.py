@@ -47,7 +47,11 @@ v1 = flask.Blueprint(
 def get1():
     payload = flask.request.json
     versions = {
+        'flask.request.path': flask.request.path,
+        'flask.request.full_path': flask.request.full_path,
         'flask.request.url': flask.request.url,
+        'flask.request.base_url': flask.request.base_url,
+        'flask.request.url_root': flask.request.url_root,
         'python': sys.version,
         'python-info': sys.version_info,
         'flask': flask.__version__,
@@ -75,13 +79,13 @@ api = flask_restplus.Api(
     subsys, # flask.Blueprint
     title = 'Subsystem Service',
     version = '1.0',
-    description = 'A set of service for the Subsytem',
+    description = 'A set of services for the Subsytem',
     endpoint = 'bp-frp', # does not do a damn thing
 )
 
 ns2 = flask_restplus.Namespace(
     name='Subsystem Service v2',
-    description='A set of service for the Subsytem v2.',
+    description='A set of services for the Subsytem v2.',
     path='/v2',
 )
 

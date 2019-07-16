@@ -35,11 +35,11 @@ def url_map():
 def get1():
     payload = flask.request.json
     versions = {
-        'flask.request.path':      flask.request.path,
+        'flask.request.path': flask.request.path,
         'flask.request.full_path': flask.request.full_path,
-        'flask.request.url':       flask.request.url,
-        'flask.request.base_url':  flask.request.base_url,
-        'flask.request.url_root':  flask.request.url_root,
+        'flask.request.url': flask.request.url,
+        'flask.request.base_url': flask.request.base_url,
+        'flask.request.url_root': flask.request.url_root,
         'python': sys.version,
         'python-info': sys.version_info,
         'flask': flask.__version__,
@@ -62,11 +62,7 @@ def get1():
 def get2():
     payload = flask.request.json
     versions = {
-        'flask.request.path': flask.request.path,
-        'flask.request.full_path': flask.request.full_path,
         'flask.request.url': flask.request.url,
-        'flask.request.base_url': flask.request.base_url,
-        'flask.request.url_root': flask.request.url_root,
         'python': sys.version,
         'python-info': sys.version_info,
         'flask': flask.__version__,
@@ -87,11 +83,7 @@ def get2():
 def get3(version_id):
     payload = flask.request.json
     versions = {
-        'flask.request.path': flask.request.path,
-        'flask.request.full_path': flask.request.full_path,
         'flask.request.url': flask.request.url,
-        'flask.request.base_url': flask.request.base_url,
-        'flask.request.url_root': flask.request.url_root,
         'app': version_id,
         'python': sys.version,
         'python-info': sys.version_info,
@@ -113,7 +105,7 @@ def get3(version_id):
 api = flask_restplus.Api(
     title = 'Subsystem Service',
     version = '1.0',
-    description = 'A set of service for the Subsytem',
+    description = 'A set of services for the Subsytem',
     endpoint = 'frp', # does not do a damn thing
 )
 
@@ -131,11 +123,7 @@ class Get4(flask_restplus.Resource):
     def get(self):
         payload = flask.request.json
         versions = {
-            'flask.request.path': flask.request.path,
-            'flask.request.full_path': flask.request.full_path,
             'flask.request.url': flask.request.url,
-            'flask.request.base_url': flask.request.base_url,
-            'flask.request.url_root': flask.request.url_root,
             'api': api.version,
             'python': sys.version,
             'python-info': sys.version_info,
@@ -170,11 +158,7 @@ class Get5(flask_restplus.Resource):
     def get(self):
         payload = flask.request.json
         versions = {
-            'flask.request.path': flask.request.path,
-            'flask.request.full_path': flask.request.full_path,
             'flask.request.url': flask.request.url,
-            'flask.request.base_url': flask.request.base_url,
-            'flask.request.url_root': flask.request.url_root,
             'api': api.version,
             'python': sys.version,
             'python-info': sys.version_info,
