@@ -39,7 +39,7 @@ v1 = flask.Blueprint(
 )
 
 ###############################################################################
-# route: /get, version in
+# route: /get, version in blueprint
 # usage: curl -i -X GET http://localhost:5000/v1/get
 ###############################################################################
 
@@ -47,11 +47,7 @@ v1 = flask.Blueprint(
 def get1():
     payload = flask.request.json
     versions = {
-        'flask.request.path': flask.request.path,
-        'flask.request.full_path': flask.request.full_path,
         'flask.request.url': flask.request.url,
-        'flask.request.base_url': flask.request.base_url,
-        'flask.request.url_root': flask.request.url_root,
         'python': sys.version,
         'python-info': sys.version_info,
         'flask': flask.__version__,
@@ -90,7 +86,7 @@ ns2 = flask_restplus.Namespace(
 )
 
 ###############################################################################
-# route: /get, version in
+# route: /get, version in namespace
 # usage: curl -i -X GET http://localhost:5000/subsys/v2/get
 ###############################################################################
 
