@@ -149,7 +149,7 @@ ns2 = flask_restplus.Namespace(
 )
 
 ###############################################################################
-# route: /v2/frp/get, flask_restplus, no version
+# route: /v2/frp/get, flask_restplus, version in namepace
 # usage: curl -i -X GET http://localhost:5000/v2/frp/get
 ###############################################################################
 
