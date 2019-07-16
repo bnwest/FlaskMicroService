@@ -103,7 +103,7 @@ def get3(version_id):
 ###############################################################################
 
 api = flask_restplus.Api(
-    title = 'Subsystem Service',
+    title = 'Subsystem-Service',
     version = '1.0',
     description = 'A set of services for the Subsytem',
     endpoint = 'frp', # does not do a damn thing
@@ -143,13 +143,13 @@ class Get4(flask_restplus.Resource):
 ###############################################################################
 
 ns2 = flask_restplus.Namespace(
-    name='Subsystem Service v2',
+    name='Subsystem-Service-v2',
     description='A set of service for the Subsytem v2.',
     path='/v2',
 )
 
 ###############################################################################
-# route: /v2/frp/get, flask_restplus, version in namepace
+# route: /v2/frp/get, flask_restplus, version in namespace
 # usage: curl -i -X GET http://localhost:5000/v2/frp/get
 ###############################################################################
 
@@ -182,7 +182,7 @@ api.init_app(app)
 """
 $ curl -X GET http://localhost:5000/url_map
 {
-  "Subsystem Service v2_get5": "/v2/frp/get", 
+  "Subsystem-Service-v2_get5": "/v2/frp/get", 
   "doc": "/", 
   "get1": "/get", 
   "get2": "/v1/get", 

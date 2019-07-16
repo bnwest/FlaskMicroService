@@ -73,14 +73,14 @@ subsys = flask.Blueprint(
 
 api = flask_restplus.Api(
     subsys, # flask.Blueprint
-    title = 'Subsystem Service',
+    title = 'Subsystem-Service',
     version = '1.0',
     description = 'A set of services for the Subsytem',
     endpoint = 'bp-frp', # does not do a damn thing
 )
 
 ns2 = flask_restplus.Namespace(
-    name='Subsystem Service v2',
+    name='Subsystem-Service-v2',
     description='A set of services for the Subsytem v2.',
     path='/v2',
 )
@@ -124,7 +124,7 @@ app.register_blueprint(subsys)
 """
 $ curl -X GET http://localhost:5000/url_map
 {
-  "Subsystem.Subsystem Service v2_get2": "/subsys/v2/get", 
+  "Subsystem.Subsystem-Service-v2_get2": "/subsys/v2/get", 
   "Subsystem.doc": "/subsys/", 
   "Subsystem.root": "/subsys/", 
   "Subsystem.specs": "/subsys/swagger.json", 
