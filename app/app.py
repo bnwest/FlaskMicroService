@@ -75,7 +75,7 @@ class EchoGetRequestSchema(marshmallow.Schema):
     # marshmallow.fields.{Dict, List, Tuple, String, UUID, Number, Integer, Decimal, Boolean, Float, DateTime, Time, Date, Url}
 
     @marshmallow.validates('answer')
-    def validate_lead_time(self, answer):
+    def validate_answer(self, answer):
         """ Answer must be 42. """
         if answer is not 42:
             raise marshmallow.ValidationError('Answer must 42. Deep Thought has degreed.')
