@@ -80,6 +80,35 @@ api = flask_restplus.Api(
     # endpoint = 'bp-frp', # does not do a damn thing
 )
 
+###############################################################################
+# route: /get, version in namespace
+# usage: curl -i -X GET http://localhost:5000/subsys/get
+###############################################################################
+
+@api.route('/get')
+class Get2(flask_restplus.Resource):
+    def get(self):
+        payload = flask.request.json
+        versions = {
+            'flask.request.url': flask.request.url,
+            'api': api.version,
+            'python': sys.version,
+            'python-info': sys.version_info,
+            'flask': flask.__version__,
+            'flask_restplus': flask_restplus.__version__,
+            'marshmallow': marshmallow.__version__,
+            # numpy
+            # tensorflow
+            # etc.
+        }
+        return flask.jsonify(versions)
+
+###############################################################################
+###############################################################################
+# flask_restplus namespace
+###############################################################################
+###############################################################################
+
 ns2 = flask_restplus.Namespace(
     name='Flask-Restplus-Namespace-Subsystem-Service-v2',
     description='A set of services for the Subsytem v2.',
@@ -92,7 +121,7 @@ ns2 = flask_restplus.Namespace(
 ###############################################################################
 
 @ns2.route('/get')
-class Get2(flask_restplus.Resource):
+class Get3(flask_restplus.Resource):
     def get(self):
         payload = flask.request.json
         versions = {
