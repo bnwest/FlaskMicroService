@@ -106,7 +106,8 @@ api = flask_restplus.Api(
     title = 'Subsystem-Service',
     version = '1.0',
     description = 'A set of services for the Subsytem',
-    endpoint = 'frp', # does not do a damn thing
+    ui=True, # Swagger UI on
+    #endpoint = 'frp', # does not do a damn thing
 )
 
 ###############################################################################

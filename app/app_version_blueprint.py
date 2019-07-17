@@ -72,11 +72,12 @@ subsys = flask.Blueprint(
 )
 
 api = flask_restplus.Api(
-    subsys, # flask.Blueprint
+    subsys, # flask.Blueprint or flask.Flask
     title = 'Subsystem-Service',
     version = '1.0',
     description = 'A set of services for the Subsytem',
-    endpoint = 'bp-frp', # does not do a damn thing
+    ui=True, # Swagger UI on
+    # endpoint = 'bp-frp', # does not do a damn thing
 )
 
 ns2 = flask_restplus.Namespace(
