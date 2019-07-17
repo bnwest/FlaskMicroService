@@ -103,7 +103,7 @@ def get3(version_id):
 ###############################################################################
 
 api = flask_restplus.Api(
-    title = 'Subsystem-Service',
+    title = 'Flask-Restplus-Api-Subsystem-Service',
     version = '1.0',
     description = 'A set of services for the Subsytem',
     ui=True, # Swagger UI on
@@ -144,7 +144,7 @@ class Get4(flask_restplus.Resource):
 ###############################################################################
 
 ns2 = flask_restplus.Namespace(
-    name='Subsystem-Service-v2',
+    name='Flask-Restplus-Namespace-Subsystem-Service-v2',
     description='A set of service for the Subsytem v2.',
     path='/v2',
 )

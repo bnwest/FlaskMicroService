@@ -73,7 +73,7 @@ subsys = flask.Blueprint(
 
 api = flask_restplus.Api(
     subsys, # flask.Blueprint or flask.Flask
-    title = 'Subsystem-Service',
+    title = 'Flask-Restplus-Api-Subsystem-Service-From-Blueprint',
     version = '1.0',
     description = 'A set of services for the Subsytem',
     ui=True, # Swagger UI on
@@ -81,7 +81,7 @@ api = flask_restplus.Api(
 )
 
 ns2 = flask_restplus.Namespace(
-    name='Subsystem-Service-v2',
+    name='Flask-Restplus-Namespace-Subsystem-Service-v2',
     description='A set of services for the Subsytem v2.',
     path='/v2',
 )
@@ -115,8 +115,10 @@ class Get2(flask_restplus.Resource):
 
 api.add_namespace(ns2)
 
-# Calling Api.init_app() is not required here because registering the blueprint
-# with the app takes care of setting up the routing for the application.
+# Note: init_app() and register_blueprint() together will attempt to perform
+# the same low level routing which will throw an exception on the second attempt.
+# "Calling Api.init_app() is not required here because registering the blueprint
+# with the app takes care of setting up the routing for the application."
 # api.init_app(app)
 
 app.register_blueprint(v1)
