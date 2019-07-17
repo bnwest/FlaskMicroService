@@ -17,7 +17,21 @@ import flask_restplus
 import marshmallow
 
 
+###############################################################################
+###############################################################################
+# flask
+###############################################################################
+###############################################################################
+
 app = flask.Flask(__name__)
+
+@app.route('/url_map')
+def url_map():
+    routes= {}
+    map = app.url_map
+    for rule in map._rules:
+        routes[rule.endpoint] = rule.rule
+    return flask.jsonify(routes)
 
 # flask signals:
 # https://flask.palletsprojects.com/en/1.0.x/api/#core-signals-list
@@ -26,7 +40,7 @@ app = flask.Flask(__name__)
 # /endpoint
 ###############################################################################
 
-@app.route('/')
+@app.route('/hello')
 def hello_world():
     app.logger.info('HELLO WORLD.')
     return flask.jsonify('\nFlask Dockerized:\n\nHello World.\n')
@@ -85,10 +99,16 @@ def echo():
     return flask.jsonify(payload)
 
 ###############################################################################
-# /echo_plus endpoint
+###############################################################################
+# flask_restplus
+###############################################################################
 ###############################################################################
 
 api = flask_restplus.Api(app)
+
+###############################################################################
+# /echo_plus endpoint
+###############################################################################
 
 echo_plus_model = api.model('Echo Get Response Model', {
     'answer':  flask_restplus.fields.Integer(required=True, description='The answer to all questions.'),
