@@ -104,7 +104,13 @@ def echo():
 ###############################################################################
 ###############################################################################
 
-api = flask_restplus.Api(app)
+api = flask_restplus.Api(
+    app,
+    title='Flask-Restplus-Api-Subsystem-Service',
+    version='1.0',
+    description='A set of services for the Subsytem',
+    ui=True, # Swagger UI on
+)
 
 ###############################################################################
 # /echo_plus endpoint
