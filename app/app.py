@@ -37,7 +37,7 @@ def url_map():
 # https://flask.palletsprojects.com/en/1.0.x/api/#core-signals-list
 
 ###############################################################################
-# /endpoint
+# /hello endpoint
 ###############################################################################
 
 @app.route('/hello')
