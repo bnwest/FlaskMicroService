@@ -12,6 +12,11 @@ $ docker build -t flask-micro-service:latest .
 $ docker run -d -p 5000:5000 flask-micro-service
 90b5e91f873c5fe9acf014ca63cfc5235a5b5d66ecb534c83cc9963bba98c36f
 ```
+or
+```bash
+$ docker run -d -p 5000:5000 --entrypoint python flask-micro-service app.py
+90b5e91f873c5fe9acf014ca63cfc5235a5b5d66ecb534c83cc9963bba98c36f
+```
 
 ## Visit running flask app within broswer via URLs:
 ```bash
