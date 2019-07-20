@@ -2,7 +2,7 @@ import requests
 
 
 def test_hello_word():
-    r = requests.get("http://flask_micro_service:5000/")
+    r = requests.get("http://flask_micro_service:5000/hello")
     assert r.status_code == 200
     response_str = r.json()
     assert type(response_str) == str
